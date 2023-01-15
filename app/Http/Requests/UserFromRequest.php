@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class UserFromRequest
 {
     /**
@@ -18,7 +16,6 @@ class UserFromRequest
             'email' => 'required|email',
             'birthday' => 'required|date_format:Y-m-d|date',
             'cpf' => 'required|cpf',
-            'monthly_income' => 'required|numeric',
         ];
     }
 
@@ -42,9 +39,6 @@ class UserFromRequest
 
             'cpf.required' => 'The :attribute field is required.',
             'cpf.cpf' => 'The :attribute must be valid CPF.',
-
-            'monthly_income.required' => "The :attribute field is required.",
-            'monthly_income.numeric' => "The :attribute field must be numeric."
         ];
     }
 }

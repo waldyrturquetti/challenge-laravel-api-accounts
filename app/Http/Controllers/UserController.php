@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\User\CreateUser\CreateUserCommand;
+use App\Application\User\CreateUser\CreateUserHandle;
 use App\Http\Requests\UserFromRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -11,6 +13,17 @@ use \Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
+    private CreateUserHandle $createUserHandle;
+
+    /**
+     * @param CreateUserHandle $createUserHandle
+     */
+    public function __construct(CreateUserHandle $createUserHandle)
+    {
+        $this->createUserHandle = $createUserHandle;
+    }
+
+
     /**
      * Creates User register
      *
@@ -22,9 +35,19 @@ class UserController extends Controller
 
         if ($validator->fails()) {
             return Response::json([ 'messages' => $validator->getMessageBag() ],
-                ResponseHttpStatus::HTTP_UNPROCESSABLE_ENTITY);
+                ResponseHttpStatus::HTTP_UNPROCESSABLE_ENTITY
+            );
         }
 
-        return Response::json([ "name" => $request->name ], ResponseHttpStatus::HTTP_OK);
+        $command = new CreateUserCommand(
+            $request->input('name'),
+            $request->input('email'),
+            $request->input('birthday'),
+            $request->input('cpf')
+        );
+
+        $this->createUserHandle->handle($command);
+
+        return Response::json([ "name" => $request->name ], ResponseHttpStatus::HTTP_CREATED);
     }
 }
