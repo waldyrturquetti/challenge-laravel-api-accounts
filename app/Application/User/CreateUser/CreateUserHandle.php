@@ -41,7 +41,7 @@ class CreateUserHandle
         }
 
         $this->verifyUUID($createUserCommand);
-        
+
         return $this->userRepository->createUser($createUserCommand->toModel());
     }
 
