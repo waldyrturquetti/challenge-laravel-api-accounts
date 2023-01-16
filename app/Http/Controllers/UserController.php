@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Application\User\CreateUser\CreateUserCommand;
 use App\Application\User\CreateUser\CreateUserHandle;
+use App\Exceptions\ConflictException;
 use App\Http\Requests\UserFromRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -28,6 +29,8 @@ class UserController extends Controller
      * Creates User register
      *
      * @api POST /api/user
+     *
+     * @throws ConflictException
      */
     public function createUser(Request $request): JsonResponse
     {
@@ -46,8 +49,8 @@ class UserController extends Controller
             $request->input('cpf')
         );
 
-        $this->createUserHandle->handle($command);
+        $user = $this->createUserHandle->handle($command);
 
-        return Response::json([ "name" => $request->name ], ResponseHttpStatus::HTTP_CREATED);
+        return Response::json($user->toArray(), ResponseHttpStatus::HTTP_CREATED);
     }
 }

@@ -2,12 +2,16 @@
 
 namespace App\Application\User\CreateUser;
 
+use App\Models\User;
+use Illuminate\Support\Str;
+
 class CreateUserCommand
 {
     private string $name;
     private string $email;
     private string $birthday;
     private string $cpf;
+    private string $uuid;
 
     /**
      * @param string $name
@@ -21,6 +25,7 @@ class CreateUserCommand
         $this->email = $email;
         $this->birthday = $birthday;
         $this->cpf = $cpf;
+        $this->uuid = Str::uuid()->toString();
     }
 
     /**
@@ -53,5 +58,34 @@ class CreateUserCommand
     public function getCpf(): string
     {
         return $this->cpf;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUUID(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param string $uuid
+     */
+    public function setUUID(string $uuid): void
+    {
+        $this->uuid = $uuid;
+    }
+
+    public function toModel(): User
+    {
+        $user = new User();
+        $user->name = $this->name;
+        $user->email = $this->email;
+        $user->birthday = $this->birthday;
+        $user->cpf = $this->cpf;
+        $user->uuid = $this->uuid;
+        $user->active = true;
+
+        return $user;
     }
 }

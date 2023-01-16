@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->date('birthday');
-            $table->string('cpf');
-            $table->uuid('uuid');
+            $table->string('cpf')->unique();
+            $table->uuid('uuid')->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
