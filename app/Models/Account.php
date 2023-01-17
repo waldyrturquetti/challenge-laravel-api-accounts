@@ -8,17 +8,16 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * Class User
+ * Class Account
  * @package App\models
  * @property int $id
- * @property string $name
- * @property string $email
- * @property string $birthday
- * @property string $cpf
- * @property string $uuid
- * @property bool $active
+ * @property string $user_name
+ * @property double $credits
+ * @property string $type
+ * @property boolean $active
+ * @property int $user_id
  */
-class User extends Model
+class Account extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -27,7 +26,7 @@ class User extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [ 'id', 'name', 'email', 'birthday', 'cpf', 'uuid', 'active' ];
+    protected $fillable = [ 'id', 'user_name', 'credits', 'type', 'active', 'user_id' ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -35,4 +34,12 @@ class User extends Model
      * @var array<int, string>
      */
     protected $hidden = [ 'created_at', 'updated_at' ];
+
+    public const PERSONAL_ACCOUNT = 'personal_account';
+    public const BUSINESS_ACCOUNT = 'business_account';
+
+    public const ALL_TYPES = [
+        self::PERSONAL_ACCOUNT,
+        self::BUSINESS_ACCOUNT,
+    ];
 }

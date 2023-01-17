@@ -11,6 +11,7 @@ class CreateUserCommand
     private string $email;
     private string $birthday;
     private string $cpf;
+    private string $zipCode;
     private string $uuid;
 
     /**
@@ -18,13 +19,15 @@ class CreateUserCommand
      * @param string $email
      * @param string $birthday
      * @param string $cpf
+     * @param string $zipCode
      */
-    public function __construct(string $name, string $email, string $birthday, string $cpf)
+    public function __construct(string $name, string $email, string $birthday, string $cpf, string $zipCode)
     {
         $this->name = $name;
         $this->email = $email;
         $this->birthday = $birthday;
         $this->cpf = $cpf;
+        $this->zipCode = $zipCode;
         $this->uuid = Str::uuid()->toString();
     }
 
@@ -58,6 +61,14 @@ class CreateUserCommand
     public function getCpf(): string
     {
         return $this->cpf;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZipCode(): string
+    {
+        return $this->zipCode;
     }
 
     /**

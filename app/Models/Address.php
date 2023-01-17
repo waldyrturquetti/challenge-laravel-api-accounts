@@ -8,17 +8,18 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * Class User
+ * Class Address
  * @package App\models
  * @property int $id
- * @property string $name
- * @property string $email
- * @property string $birthday
- * @property string $cpf
- * @property string $uuid
- * @property bool $active
+ * @property string $zip_code
+ * @property string $street
+ * @property string $complement
+ * @property string $neighborhood
+ * @property string $city
+ * @property string $uf
+ * @property int $user_id
  */
-class User extends Model
+class Address extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -27,7 +28,7 @@ class User extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [ 'id', 'name', 'email', 'birthday', 'cpf', 'uuid', 'active' ];
+    protected $fillable = [ 'id', 'zip_code', 'street', 'complement', 'neighborhood', 'city', 'uf', 'user_id' ];
 
     /**
      * The attributes that should be hidden for serialization.

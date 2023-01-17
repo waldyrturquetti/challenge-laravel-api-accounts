@@ -46,7 +46,8 @@ class UserController extends Controller
             $request->input('name'),
             $request->input('email'),
             $request->input('birthday'),
-            $request->input('cpf')
+            $request->input('cpf'),
+            $request->input('zip_code')
         );
 
         $user = $this->createUserHandle->handle($command);
