@@ -17,6 +17,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $neighborhood
  * @property string $city
  * @property string $uf
+ * @property int $number
  * @property int $user_id
  */
 class Address extends Model
@@ -28,7 +29,7 @@ class Address extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [ 'id', 'zip_code', 'street', 'complement', 'neighborhood', 'city', 'uf', 'user_id' ];
+    protected $fillable = [ 'id', 'zip_code', 'street', 'complement', 'neighborhood', 'city', 'uf', 'number', 'user_id' ];
 
     /**
      * The attributes that should be hidden for serialization.

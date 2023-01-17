@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Application\User\CreateUser\CreateUserCommand;
 use App\Application\User\CreateUser\CreateUserHandle;
 use App\Exceptions\ConflictException;
+use App\Exceptions\ZipCodeInvalidException;
 use App\Http\Requests\UserFromRequest;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -28,9 +30,14 @@ class UserController extends Controller
     /**
      * Creates User register
      *
-     * @api POST /api/user
+     * @param Request $request
+     * @return JsonResponse
      *
      * @throws ConflictException
+     * @throws ZipCodeInvalidException
+     * @throws GuzzleException
+     *
+     * @api POST /api/user
      */
     public function createUser(Request $request): JsonResponse
     {

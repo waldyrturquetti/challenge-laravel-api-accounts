@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\AddressController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,4 @@ use \App\Http\Controllers\UserController;
 */
 
 Route::post('/api/user', [ UserController::class, 'createUser' ]);
+Route::post('/api/address', [ AddressController::class, 'createAddress']);
