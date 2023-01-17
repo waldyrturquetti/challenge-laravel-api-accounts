@@ -24,6 +24,8 @@ class Address extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $table = 'address';
+
     /**
      * The attributes that are mass assignable.
      *

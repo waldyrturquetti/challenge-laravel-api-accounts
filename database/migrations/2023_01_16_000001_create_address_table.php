@@ -21,6 +21,7 @@ class CreateAddressTable extends Migration
             $table->string('neighborhood');
             $table->string('city');
             $table->char('uf', 2);
+            $table->integer('number');
             $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
 

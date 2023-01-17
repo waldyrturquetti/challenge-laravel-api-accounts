@@ -22,6 +22,11 @@ class UserRepository implements UserRepositoryInterface
         return User::query()->where('uuid', $uuid)->exists();
     }
 
+    public function existsUser(int $id): bool
+    {
+        return User::query()->where('id', $id)->exists();
+    }
+
     public function createUser(User $user): ?User
     {
         $user->save();

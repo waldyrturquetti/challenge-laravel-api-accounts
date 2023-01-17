@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\AddressRepository;
+use App\Repository\AddressRepositoryInterface;
 use App\Repository\UserRepository;
 use App\Repository\UserRepositoryInterface;
 use Illuminate\Support\Facades\Validator;
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->singleton(AddressRepositoryInterface::class, AddressRepository::class);
     }
 
     /**

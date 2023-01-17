@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Application\Address\CreateAddress\CreateAddressCommand;
 use App\Application\Address\CreateAddress\CreateAddressHandler;
+use App\Exceptions\ConflictException;
 use App\Http\Requests\AddressFromRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -29,6 +30,8 @@ class AddressController extends Controller
      * @param Request $request
      * @return JsonResponse
      *
+     * @throws ConflictException
+     *
      * @api POST /api/address
      */
     public function createAddress(Request $request): JsonResponse
@@ -52,8 +55,8 @@ class AddressController extends Controller
             $request->input('user_id'),
         );
 
-        $this->createAddressHandler->handle($command);
+        $address = $this->createAddressHandler->handle($command);
 
-        return Response::json(['address' => 'teste'], ResponseHttpStatus::HTTP_CREATED);
+        return Response::json($address->toArray(), ResponseHttpStatus::HTTP_CREATED);
     }
 }

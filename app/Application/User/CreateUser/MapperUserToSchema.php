@@ -2,7 +2,10 @@
 
 namespace App\Application\User\CreateUser;
 
+use App\Exceptions\ConflictException;
+use App\Exceptions\ZipCodeInvalidException;
 use App\Models\User;
+use GuzzleHttp\Exception\GuzzleException;
 
 class MapperUserToSchema
 {
@@ -12,6 +15,12 @@ class MapperUserToSchema
     private string $cpf;
     private array $address;
 
+    /**
+     * @param User $user
+     * @param array $address
+     *
+     * @return void
+     */
     public function __construct(User $user, array $address)
     {
         $this->id = $user->id;
@@ -21,6 +30,9 @@ class MapperUserToSchema
         $this->address = $address;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [
