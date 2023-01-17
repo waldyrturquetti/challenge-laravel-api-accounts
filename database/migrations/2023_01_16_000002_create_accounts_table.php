@@ -18,13 +18,14 @@ class CreateAccountsTable extends Migration
             $table->id();
             $table->string('user_name');
             $table->double('credits')->default(0.0);
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id');
             $table->enum('type', Account::ALL_TYPES);
+            $table->string('cnpj')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade');
+                ->on('users');
         });
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\AddressController;
+use \App\Http\Controllers\AccountsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,4 @@ use \App\Http\Controllers\AddressController;
 
 Route::post('/api/user', [ UserController::class, 'createUser' ]);
 Route::post('/api/address', [ AddressController::class, 'createAddress']);
+Route::post('/api/accounts', [ AccountsController::class, 'createAccount' ]);

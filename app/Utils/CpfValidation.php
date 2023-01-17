@@ -4,7 +4,7 @@ namespace App\Utils;
 
 class CpfValidation
 {
-    public function validate($attribute, $value, $parameters, $validator)
+    public function validate($attribute, $value, $parameters, $validator): bool
     {
         return $this->isValidate($attribute, $value);
     }

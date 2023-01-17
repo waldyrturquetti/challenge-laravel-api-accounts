@@ -12,8 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @package App\models
  * @property int $id
  * @property string $user_name
- * @property double $credits
+ * @property float $credits
  * @property string $type
+ * @property string $cnpj
  * @property boolean $active
  * @property int $user_id
  */
@@ -26,7 +27,7 @@ class Account extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [ 'id', 'user_name', 'credits', 'type', 'active', 'user_id' ];
+    protected $fillable = [ 'id', 'user_name', 'credits', 'type', 'cnpj', 'active', 'user_id' ];
 
     /**
      * The attributes that should be hidden for serialization.

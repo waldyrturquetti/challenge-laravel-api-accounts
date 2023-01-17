@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\AccountRepository;
+use App\Repository\AccountRepositoryInterface;
 use App\Repository\AddressRepository;
 use App\Repository\AddressRepositoryInterface;
 use App\Repository\UserRepository;
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
         $this->app->singleton(AddressRepositoryInterface::class, AddressRepository::class);
+        $this->app->singleton(AccountRepositoryInterface::class, AccountRepository::class);
     }
 
     /**
