@@ -3,11 +3,9 @@
 namespace App\Application\Address\CreateAddress;
 
 use App\Models\Address;
-use App\Models\User;
 
 class MapperAddressToSchema
 {
-
     private int $id;
     private string $zip_code;
     private string $street;
@@ -18,6 +16,11 @@ class MapperAddressToSchema
     private int $number;
     private int $user_id;
 
+    /**
+     * @param Address $address
+     *
+     * @return void
+     */
     public function __construct(Address $address)
     {
         $this->id = $address->id;
@@ -31,10 +34,14 @@ class MapperAddressToSchema
         $this->user_id = $address->user_id;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [
             'id' => $this->id,
+            'zip_code' => $this->zip_code,
             'street' => $this->street,
             'complement' => $this->complement,
             'neighborhood' => $this->neighborhood,
