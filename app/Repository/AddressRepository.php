@@ -11,7 +11,7 @@ class AddressRepository implements AddressRepositoryInterface
         return Address::query()->where('user_id', $user_id)->exists();
     }
 
-    public function createAddress(Address $address): ?Address
+    public function createAddress(Address $address): Address
     {
         $address->save();
         return $address;

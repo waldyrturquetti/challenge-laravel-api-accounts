@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Application\Account\createAccount\CreateAccountCommand;
 use App\Application\Account\createAccount\CreateAccountHandler;
+use App\Exceptions\ConflictException;
 use App\Http\Requests\AccountFromRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response as ResponseHttpStatus;
 
-class AccountsController extends Controller
+class AccountController extends Controller
 {
     private CreateAccountHandler $createAccountHandler;
 
@@ -29,6 +30,8 @@ class AccountsController extends Controller
      *
      * @param Request $request
      * @return JsonResponse
+     *
+     * @throws ConflictException
      *
      * @api POST /api/account
      */
@@ -50,8 +53,8 @@ class AccountsController extends Controller
             $request->input('cnpj')
         );
 
-        $this->createAccountHandler->handle($command);
+        $account = $this->createAccountHandler->handle($command);
 
-        return Response::json([ 'account' => 'teste'], ResponseHttpStatus::HTTP_CREATED);
+        return Response::json($account->toArray(), ResponseHttpStatus::HTTP_CREATED);
     }
 }

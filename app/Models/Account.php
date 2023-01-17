@@ -15,7 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property float $credits
  * @property string $type
  * @property string $cnpj
- * @property boolean $active
+ * @property bool $active
  * @property int $user_id
  */
 class Account extends Model

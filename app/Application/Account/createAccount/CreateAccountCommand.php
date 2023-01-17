@@ -28,14 +28,31 @@ class CreateAccountCommand
         $this->cnpj = $cnpj;
     }
 
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCnpj(): ?string
+    {
+        return $this->cnpj;
+    }
+
     public function toModel(): Account
     {
         $account = new Account();
         $account->user_name = $this->user_name;
-        $account->credits = $this->credits;
+        $account->credits = $this->credits ?? 0.00;
         $account->user_id = $this->user_id;
         $account->type = $this->type;
         $account->cnpj = $this->cnpj;
+        $account->active = true;
 
         return $account;
     }

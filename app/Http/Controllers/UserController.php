@@ -35,7 +35,6 @@ class UserController extends Controller
      *
      * @throws ConflictException
      * @throws ZipCodeInvalidException
-     * @throws GuzzleException
      *
      * @api POST /api/user
      */

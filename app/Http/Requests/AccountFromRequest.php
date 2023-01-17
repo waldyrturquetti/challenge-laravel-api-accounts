@@ -15,8 +15,8 @@ class AccountFromRequest
             'user_name' => 'required|min:5',
             'credits' => 'nullable|numeric',
             'user_id' => 'required|integer',
-            'type' => 'required',
-            'cnpj' => 'required',
+            'type' => 'required|in:personal_account,business_account',
+            'cnpj' => 'nullable',
         ];
     }
 
@@ -28,21 +28,16 @@ class AccountFromRequest
     public static function messages(): array
     {
         return [
-            'zip_code.required' => 'The :attribute field is required.',
-            'zip_code.size'=> 'The :attribute must be 9 characters',
+            'user_name.required' => 'The :attribute field is required.',
+            'user_name.min'=> 'The :attribute must be more that 9 characters.',
 
-            'street.required' => 'The :attribute field is required.',
-            'neighborhood.required' => 'The :attribute field is required.',
-            'city.required' => 'The :attribute field is required.',
-
-            'uf.required' => 'The :attribute field is required.',
-            'uf.size' => 'The :attribute must be 2 characters.',
-
-            'number.required' => 'The :attribute field is required.',
-            'number.integer' => 'The :attribute must be a integer.',
+            'credits.numeric' => 'The :attribute field must be a numeric.',
 
             'user_id.required' => 'The :attribute field is required.',
             'user_id.integer' => 'The :attribute must be a integer.',
+
+            'type.required' => 'The :attribute field is required.',
+            'type.in' => 'The :attribute must be `personal_account` or `business_account`.',
         ];
     }
 }

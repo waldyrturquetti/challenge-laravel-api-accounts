@@ -8,5 +8,5 @@ interface AddressRepositoryInterface
 {
     public function existsAddressForThisUser(int $user_id): bool;
 
-    public function createAddress(Address $address): ?Address;
+    public function createAddress(Address $address): Address;
 }

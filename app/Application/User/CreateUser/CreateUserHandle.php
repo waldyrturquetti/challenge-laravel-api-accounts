@@ -34,7 +34,6 @@ class CreateUserHandle
      * @return MapperUserToSchema
      *
      * @throws ConflictException
-     * @throws GuzzleException
      * @throws ZipCodeInvalidException
      */
     public function handle(CreateUserCommand $createUserCommand): MapperUserToSchema

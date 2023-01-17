@@ -10,5 +10,5 @@ interface UserRepositoryInterface
     public function existsCpf(string $cpf): bool;
     public function existsUUID(string $uuid): bool;
     public function existsUser(int $id): bool;
-    public function createUser(User $user): ?User;
+    public function createUser(User $user): User;
 }

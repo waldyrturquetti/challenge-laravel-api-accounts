@@ -13,27 +13,27 @@ class VerifyCepAndFormatAddressHandle
 
     /**
      * @throws ZipCodeInvalidException
-     * @throws GuzzleException
      */
     public function handle(string $zipCode): array
     {
-        $client = new Client();
-        $url = str_replace('CEP', $zipCode, self::URL_VIACEP);
-        $response = $client->get($url);
+        try {
+            $client = new Client();
+            $url = str_replace('CEP', $zipCode, self::URL_VIACEP);
+            $response = $client->get($url);
 
-        if ($response->getStatusCode() != ResponseHttpStatus::HTTP_OK) {
+            $addressByRequest = json_decode($response->getBody(), true);
+
+            return [
+                'zip_code' => $addressByRequest['cep'],
+                'street' => $addressByRequest['logradouro'],
+                'complement' => $addressByRequest['complemento'],
+                'neighborhood' => $addressByRequest['bairro'],
+                'city' => $addressByRequest['localidade'],
+                'uf' => $addressByRequest['uf']
+            ];
+
+        } catch (GuzzleException $exception) {
             throw new ZipCodeInvalidException();
         }
-
-        $addressByRequest = json_decode($response->getBody(), true);
-
-        return [
-            'zip_code' => $addressByRequest['cep'],
-            'street' => $addressByRequest['logradouro'],
-            'complement' => $addressByRequest['complemento'],
-            'neighborhood' => $addressByRequest['bairro'],
-            'city' => $addressByRequest['localidade'],
-            'uf' => $addressByRequest['uf']
-        ];
     }
 }

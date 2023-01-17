@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('user_name');
-            $table->double('credits')->default(0.0);
+            $table->decimal('credits')->default(0.00);
             $table->unsignedBigInteger('user_id');
             $table->enum('type', Account::ALL_TYPES);
             $table->string('cnpj')->nullable();
