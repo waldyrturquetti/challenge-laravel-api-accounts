@@ -2,6 +2,7 @@
 
 - You need have Docker in your machine.
 - You must git clone a directory on your machine.
+- In this directory execute the `commands`.
 
 ### Commands for run
 
