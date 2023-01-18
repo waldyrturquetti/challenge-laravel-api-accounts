@@ -4,7 +4,7 @@
 - You must git clone a directory on your machine.
 - In this directory execute the `commands`.
 
-### Commands for run
+## Commands for run
 
 - Use Docker’s composer image to mount the directories that you will need for this Laravel project and avoid the overhead of installing Composer globally: 
 ```
@@ -31,7 +31,7 @@ docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan config:cache
 ```
 
-## Endpoints
+# Endpoints
 
 The base url for execute endpoints for this project is `http://localhost`.
 
