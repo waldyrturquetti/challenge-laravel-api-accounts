@@ -1,0 +1,31 @@
+/////////////////////////////////////////////////////////////////////////////
+1. A solução deve ser disponibilizada em Cloud ou On-premise?
+
+Com certeza em um ambiente cloud.
+
+/////////////////////////////////////////////////////////////////////////////
+2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, responda qual ferramenta acreditas ser apropriada para o controle de tarefas da equipe, a ferramenta é ágil?
+
+Eu particularmente gosto bastante do Jira para o controle de tarefas.
+
+Para essa equipe de 4 pessoas, eu usária Scrum, pois juntos iriamos fazer a votação das dificuldades das tarefas nas sprints.
+E nas próprias sprints definiramos como agir na arquitetura do projeto.
+
+/////////////////////////////////////////////////////////////////////////////
+3. Você se sente capaz de liderar esta equipe? Por quê?
+
+No momento acho que não sou capaz de liderar uma equipe, no meu ver para liderar uma equipe é necessário ser um Senior e atualmente sou Pleno. Mas em 2 anos serei capaz de liderar uma equipe em projeto similar a esse.
+
+/////////////////////////////////////////////////////////////////////////////
+4. Se pudesse sugerir uma melhoria, mudança ou oportunidade. O que seria?
+
+Ao meu ver, pedir em um desafio de backend para o projeto se comunicar com a VIACEP não foi uma boa ideia.
+Pela questão que o VIACEP recebe o CEP verifica se ele existe e retorna o endereço, menos o número e em alguns casos o complemento.
+Utilizar o VIACEP seria bom em um desafio frontend, que ai sim chamaria a API VIACEP, acrescentaria o número e ai sim mandaria o payload para o backend com as informações do usuário e endereço.
+
+/////////////////////////////////////////////////////////////////////////////
+5. Acha válido esse desafio para o processo que está participando?
+
+Sim. Fazer esse desafio foi uma maneira divertida de aplicar meus conhecimentos como Engenheiro/Arquiteto de software.
+
+/////////////////////////////////////////////////////////////////////////////
